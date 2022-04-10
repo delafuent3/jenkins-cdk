@@ -63,12 +63,15 @@ pipeline {
 //         }
 
 
-        stage('bootstrap-account') {
+        stage('install-cdk') {
             steps {
                 withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
                     sh '''
                         echo "Hello Jenkins"
-                        cdk --version
+                        apt install curl
+                        curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
+                        bash nodesource_setup.sh
+                        apt install nodejs
                     '''
                 }
             }
