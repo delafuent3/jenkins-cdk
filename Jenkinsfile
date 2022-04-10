@@ -14,19 +14,33 @@ pipeline {
             }
         }
 
-        stage('test AWS credentials') {
+//         // Step to Test aws credentials stored in jenkins
+//         stage('test AWS credentials') {
+//             steps {
+//                 withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
+//                     sh '''
+//                         aws sts get-caller-identity
+//                     '''
+//                 }
+//             }
+//         }
+
+
+
+
+
+        stage('install requirements') {
             steps {
                 withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
                     sh '''
-                        aws sts get-caller-identity
+                        pip3 install -r requirements.txt
                     '''
                 }
             }
         }
 
 
-
-//         stage('test AWS credentials') {
+//         stage('bootstrap-account') {
 //             steps {
 //                 withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
 //                     sh '''
@@ -39,7 +53,10 @@ pipeline {
 //                 }
 //             }
 //         }
-//
+
+
+
+
 //         stage('deploy-ecs-cluster') {
 //             steps {
 //                 withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
