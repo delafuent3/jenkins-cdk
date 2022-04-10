@@ -14,6 +14,17 @@ pipeline {
             }
         }
 
+        stage('test AWS credentials') {
+            steps {
+                withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
+                    sh '''
+                        aws sts get-caller-identity
+                    '''
+                }
+            }
+        }
+
+
 
 //         stage('test AWS credentials') {
 //             steps {
