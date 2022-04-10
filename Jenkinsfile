@@ -26,9 +26,7 @@ pipeline {
 //         }
 
 
-
-
-
+        // Install Requirements
         stage('install requirements') {
             steps {
                 withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
@@ -38,6 +36,31 @@ pipeline {
                 }
             }
         }
+
+
+
+//         stage('bootstrap-account') {
+//             steps {
+//                 withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
+//                     sh '''
+//                         cdk bootstrap aws://746590608925/ap-southeast-2
+//                     '''
+//                 }
+//             }
+//         }
+
+
+        stage('bootstrap-account') {
+            steps {
+                withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
+                    sh '''
+                        cdk ls
+                    '''
+                }
+            }
+        }
+
+
 
 
 //         stage('bootstrap-account') {
