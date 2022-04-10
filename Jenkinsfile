@@ -50,18 +50,28 @@ pipeline {
 //         }
 
 
+//         stage('bootstrap-account') {
+//             steps {
+//                 withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
+//                     sh '''
+//                         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+//                         nvm install --lts
+//                         npm install -g aws-cdk
+//                     '''
+//                 }
+//             }
+//         }
+
+
         stage('bootstrap-account') {
             steps {
                 withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
                     sh '''
-                        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-                        nvm install --lts
-                        npm install -g aws-cdk
+                        cdk ls
                     '''
                 }
             }
         }
-
 
 
 
