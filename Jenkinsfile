@@ -54,7 +54,7 @@ pipeline {
             steps {
                 withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
                     sh '''
-                        cdk ls
+                        npm install -g aws-cdk
                     '''
                 }
             }
