@@ -71,3 +71,5 @@ docker run -d -ti --name jenkins-local -p 8080:8080 -v /var/run/docker.sock:/var
 ```
 
 Install "Cloudbees AWS Credentials" Plugin
+
+Install "AWS Steps" Plugin

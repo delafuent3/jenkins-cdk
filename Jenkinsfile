@@ -61,6 +61,7 @@ pipeline {
                 withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
                     sh '''
                         aws sts get-caller-identity
+                        cdk --version
                     '''
                 }
             }
