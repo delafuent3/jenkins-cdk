@@ -62,6 +62,7 @@ pipeline {
                     sh '''
                         aws sts get-caller-identity
                         cdk --version
+                        cdk ls
                     '''
                 }
             }
