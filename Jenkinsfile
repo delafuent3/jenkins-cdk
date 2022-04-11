@@ -19,16 +19,16 @@ pipeline {
 //         }
 
 
-//         // Install Requirements
-//         stage('install requirements') {
-//             steps {
-//                 withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
-//                     sh '''
-//                         pip3 install -r requirements.txt
-//                     '''
-//                 }
-//             }
-//         }
+        // Install Requirements
+        stage('install requirements') {
+            steps {
+                withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
+                    sh '''
+                        pip3 install -r requirements.txt
+                    '''
+                }
+            }
+        }
 
 
 
