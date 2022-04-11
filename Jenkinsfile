@@ -4,15 +4,8 @@ pipeline {
 //         REPOSITORY_NAME = "devops-demo"
 //         REPOSITORY_URI = "746590608925.dkr.ecr.ap-southeast-2.amazonaws.com/${REPOSITORY_NAME}"
 //     }
-    stages {
+//     stages {
 
-        stage('deploy-vpc') {
-            steps {
-                sh '''
-                    echo "Hello Jenkins"
-                '''
-            }
-        }
 
 //         // Step to Test aws credentials stored in jenkins
 //         stage('test AWS credentials') {
@@ -67,8 +60,7 @@ pipeline {
             steps {
                 withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
                     sh '''
-                        echo "Hello Jenkins"
-                        cdk --version
+                        aws sts get-caller-identity
                     '''
                 }
             }
