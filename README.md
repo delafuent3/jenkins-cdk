@@ -1,18 +1,5 @@
 
-# Welcome to your CDK Python project!
 
-This is a blank project for Python development with CDK.
-
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
-
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
-
-To manually create a virtualenv on MacOS and Linux:
 
 ```
 $ python3 -m venv .venv
@@ -55,4 +42,32 @@ command.
  * `cdk diff`        compare deployed stack with current state
  * `cdk docs`        open CDK documentation
 
-Enjoy!
+
+
+
+## Customize Jenkins image
+User the following command/Dockerfile to customize 
+
+`docker build -t jenkins:custom .`
+
+```
+# Build image
+FROM jenkins/jenkins:lts
+
+USER root
+
+RUN apt update && \
+    curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh && \
+    bash nodesource_setup.sh && \
+    apt install nodejs -y && \
+    npm install -g aws-cdk
+
+USER jenkins
+```
+
+Run Docker container using customized image
+```
+docker run -d -ti --name jenkins-local -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock jenkins:custom
+```
+
+Install "Cloudbees AWS Credentials" Plugin

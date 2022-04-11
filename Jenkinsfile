@@ -26,16 +26,16 @@ pipeline {
 //         }
 
 
-        // Install Requirements
-        stage('install requirements') {
-            steps {
-                withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
-                    sh '''
-                        pip3 install -r requirements.txt
-                    '''
-                }
-            }
-        }
+//         // Install Requirements
+//         stage('install requirements') {
+//             steps {
+//                 withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
+//                     sh '''
+//                         pip3 install -r requirements.txt
+//                     '''
+//                 }
+//             }
+//         }
 
 
 
@@ -68,10 +68,7 @@ pipeline {
                 withAWS(credentials: 'aws-sandbox', region: 'ap-southeast-2') {
                     sh '''
                         echo "Hello Jenkins"
-                        apt install curl
-                        curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
-                        bash nodesource_setup.sh
-                        apt install nodejs
+                        cdk --version
                     '''
                 }
             }
