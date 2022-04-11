@@ -4,7 +4,7 @@ pipeline {
 //         REPOSITORY_NAME = "devops-demo"
 //         REPOSITORY_URI = "746590608925.dkr.ecr.ap-southeast-2.amazonaws.com/${REPOSITORY_NAME}"
 //     }
-//     stages {
+     stages {
 
 
 //         // Step to Test aws credentials stored in jenkins
